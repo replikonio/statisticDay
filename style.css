@@ -57,3 +57,24 @@ canvas {
     pointer-events: none;
     z-index: 0;
 }
+.congrats {
+    background: #ffd70020;
+    border: 2px solid #ffd700;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.statistics {
+    background: #0b0c10;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 15px #45a29e50;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

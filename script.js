@@ -82,18 +82,31 @@ function renderStats() {
     const statsDiv = document.getElementById('stats');
     const title = document.getElementById('title');
 
-    if (isHappy && balance === Infinity && coverage === 100 && bugs === 0) {
+    // Поздравление
+    const congratsHtml = isHappy 
+        ? `<div class="congrats">
+                <h2>🎉 С днем программиста!</h2>
+                <p>Пусть код компилируется с первого раза и кофе всегда горячий ☕</p>
+           </div>`
+        : '';
+
+    // Статистика
+    const statsHtml = `<div class="statistics">
+        <p>Отношение личного времени к рабочему = ${balance.toFixed(1)}</p>
+        <p>Покрытие кода = ${coverage.toFixed(1)}%</p>
+        <p>Багов найдено = ${bugs}</p>
+    </div>`;
+
+    // Объединяем и вставляем
+    statsDiv.innerHTML = congratsHtml + statsHtml;
+
+    // Анимации и конфетти
+    if (isHappy) {
         title.classList.add('happy');
-        statsDiv.innerHTML = "<h2>🎉 С днем программиста!</h2><p>Пусть код компилируется с первого раза и кофе всегда горячий ☕</p>";
         startConfetti();
     } else {
         title.classList.remove('happy');
         stopConfetti();
-        statsDiv.innerHTML = `
-            <p>Баланс работы/жизни = ${balance.toFixed(1)}</p>
-            <p>Покрытие кода = ${coverage.toFixed(1)}%</p>
-            <p>Багов найдено = ${bugs}</p>
-        `;
     }
 }
 
